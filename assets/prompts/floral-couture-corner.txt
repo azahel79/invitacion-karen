@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: transparent website hero ornament for a luxury mobile quinceañera invitation
+Primary request: an original asymmetrical couture floral arrangement inspired by a midnight blue quinceañera gown, made from refined fabric flowers and botanical petals with delicate silver beadwork and a few tiny faceted crystals
+Scene/backdrop: genuinely transparent background, isolated cutout only
+Subject: elegant cluster of deep petroleum-blue, plumbago-blue and restrained dark teal flowers; fine silver metallic stems; sparse pearl-gray beads; two or three nearly imperceptible dusty-rose petal accents
+Style/medium: high-end editorial fashion accessory photography blended with handcrafted couture floral art, realistic premium materials, refined and contemporary
+Composition/framing: portrait-oriented, airy crescent arrangement with negative space through the center; no hard rectangular edges; suitable for the top and upper-right edge of a narrow phone invitation
+Lighting/mood: soft directional studio highlights, subtle reflections on crystals, dark romantic luxury, no glow halo
+Color palette: #05222C, #043F52, #097087, #61A3AA, #CBD6D4, tiny accents #AC7E75
+Materials/textures: organza and silk petals, fine metallic silver embroidery, small clear crystals, pearled beads
+Constraints: actual transparent alpha background; no text; no letters; no people; no dress; no vase; no frame; no watermark; clean natural cutout edges; avoid artificial symmetry
+Avoid: neon colors, childish flowers, excessive sparkle, generic wedding bouquet, plastic look, AI artifacts, clutter

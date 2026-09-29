@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: transparent section ornament for a luxury mobile quinceañera invitation
+Primary request: an original slender vertical couture botanical spray inspired by beadwork on a deep blue quinceañera gown, composed of two refined plumbago-blue fabric blossoms, narrow petroleum-blue leaves, delicate silver embroidery vines, tiny pearl-gray beads and sparse clear crystals
+Scene/backdrop: genuinely transparent background, isolated cutout only
+Subject: a light, elegant botanical cascade, much more minimal and airy than a bouquet, with visible negative space
+Style/medium: high-end editorial fashion accessory photography blended with handcrafted couture embroidery, realistic premium materials, refined contemporary finish
+Composition/framing: narrow vertical arrangement suitable along the lower-left edge of a phone invitation; tapering at both ends; no hard rectangular edges
+Lighting/mood: soft directional studio light, restrained crystal reflections, romantic evening luxury, no glow halo
+Color palette: #05222C, #043F52, #097087, #61A3AA, #CBD6D4, a single tiny #EEB095 petal accent
+Materials/textures: silk and organza petals, fine silver thread, small faceted crystal drops, pearl beads
+Constraints: actual transparent alpha background; no text; no people; no dress; no vase; no frame; no watermark; clean natural cutout edges; sparse and lightweight composition
+Avoid: neon colors, childish motifs, excessive sparkle, generic wedding bouquet, plastic texture, artificial symmetry, dense clutter, AI artifacts

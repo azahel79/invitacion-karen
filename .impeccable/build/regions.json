@@ -1,0 +1,18 @@
+{
+  "regions": [
+    { "id": "hero-floral", "kind": "plate", "grid": "A0:E4", "note": "asymmetrical blue couture flowers with silver crystal stems" },
+    { "id": "hero-silk", "kind": "texture", "grid": "F0:G1", "note": "clean dark petroleum silk fold sample" },
+    { "id": "xv-label", "kind": "text", "grid": "E2:G2", "note": "small widely tracked MIS XV" },
+    { "id": "hero-name", "kind": "text", "grid": "C3:J3", "note": "large high-contrast serif Karen Paola" },
+    { "id": "hero-surname", "kind": "text", "grid": "D3:I4", "note": "tracked serif HERNANDEZ AVILA" },
+    { "id": "hero-date", "kind": "text", "grid": "D4:I4", "note": "tracked sans SÁBADO 10 DE OCTUBRE" },
+    { "id": "open-control", "kind": "control", "grid": "C5:I5", "note": "outlined rounded opening button" },
+    { "id": "lower-silk", "kind": "plate", "grid": "A5:J6", "note": "draped dark silk along bottom edge of opening viewport" },
+    { "id": "intro-heading", "kind": "text", "grid": "C6:H7", "note": "centered serif blessing heading" },
+    { "id": "intro-copy", "kind": "text", "grid": "C7:H8", "note": "centered sans invitation sentence" },
+    { "id": "parents", "kind": "text", "pixelBox": { "x": 0, "y": 1475, "w": 427, "h": 200 }, "note": "parents label and names" },
+    { "id": "godparents", "kind": "text", "pixelBox": { "x": 496, "y": 1475, "w": 357, "h": 200 }, "note": "godparents label and names" },
+    { "id": "intro-floral", "kind": "plate", "pixelBox": { "x": 600, "y": 1475, "w": 253, "h": 369 }, "note": "small blue couture floral cluster with crystal details" },
+    { "id": "intro-silk", "kind": "texture", "pixelBox": { "x": 0, "y": 1680, "w": 256, "h": 164 }, "note": "quiet diagonal silk fold texture" }
+  ]
+}

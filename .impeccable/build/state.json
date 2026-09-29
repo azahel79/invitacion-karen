@@ -1,0 +1,299 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-09-29T02:00:56.022Z",
+  "comp": ".impeccable\\mocks\\couture-curtain.png",
+  "direction": null,
+  "breakpoint": "390x844",
+  "artifact": "app\\page.tsx",
+  "phase": "hero",
+  "phases": {
+    "comps": {
+      "status": "skipped",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [
+        {
+          "at": "2026-09-29T02:00:56.022Z",
+          "text": "started with an approved comp; the comp round happened before this state (surface round or manual)"
+        }
+      ],
+      "gate": null,
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-09-29T02:00:56.022Z",
+      "closedAt": "2026-09-29T02:02:59.945Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "14 regions, 5 plates, 8 text regions measured",
+        "at": "2026-09-29T02:02:59.945Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "closed",
+      "openedAt": "2026-09-29T02:02:59.945Z",
+      "closedAt": "2026-09-29T02:12:10.744Z",
+      "attempts": 1,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "5/5 plates",
+        "at": "2026-09-29T02:12:10.743Z"
+      },
+      "forced": null
+    },
+    "hero": {
+      "status": "open",
+      "openedAt": "2026-09-29T02:12:10.744Z",
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null,
+  "sessionId": "01a0eac7-8a95-72e3-9de2-8e7461932b76",
+  "plates": {
+    "hero-floral": {
+      "id": "hero-floral",
+      "file": "assets/plates/hero-floral.png",
+      "status": "ok",
+      "assetHash": "426fb329a1bd2e414547e7c38fefb7726e6da2fa82f8f5c77f053f2684f47218",
+      "regionHash": "e1460beb1970873690e301d482085fc8583de8f8fd4d33e293cde7c8238afec4",
+      "referenceHash": "aec9398c6c3db68b1ce3d4cdfabd6a5887280d3c6f8c26785de924e4dab76a8c",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 87503,
+        "totalPixels": 393694,
+        "remainingPixels": 306191,
+        "excludedFraction": 0.22226145178742882,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "xv-label",
+            "kind": "text",
+            "cropPx": {
+              "x": 341,
+              "y": 369,
+              "w": 86,
+              "h": 184
+            },
+            "pixels": 15824
+          },
+          {
+            "id": "hero-name",
+            "kind": "text",
+            "cropPx": {
+              "x": 201,
+              "y": 553,
+              "w": 226,
+              "h": 156
+            },
+            "pixels": 35256
+          },
+          {
+            "id": "hero-surname",
+            "kind": "text",
+            "cropPx": {
+              "x": 256,
+              "y": 553,
+              "w": 171,
+              "h": 369
+            },
+            "pixels": 63099
+          },
+          {
+            "id": "hero-date",
+            "kind": "text",
+            "cropPx": {
+              "x": 256,
+              "y": 738,
+              "w": 171,
+              "h": 184
+            },
+            "pixels": 31464
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "701feefb2a77ba6ff830725540ed32735dfb8bc468717a5f05115b7a539372d6",
+      "size": "854x1844",
+      "score": 0.9428
+    },
+    "hero-silk": {
+      "id": "hero-silk",
+      "file": "assets/plates/hero-silk.png",
+      "status": "ok",
+      "assetHash": "d3c790e144342dd980ca3bc29078b8db925c41529b9108a37979e6ded271f329",
+      "regionHash": "bad4e4345280fb3217a620cd9c32831ff313d196cb425d1122672bc511d4eed4",
+      "referenceHash": "aec9398c6c3db68b1ce3d4cdfabd6a5887280d3c6f8c26785de924e4dab76a8c",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 0,
+        "totalPixels": 63099,
+        "remainingPixels": 63099,
+        "excludedFraction": 0.0,
+        "fullyExcluded": false,
+        "regions": [],
+        "ignoredContainers": []
+      },
+      "compHash": "701feefb2a77ba6ff830725540ed32735dfb8bc468717a5f05115b7a539372d6",
+      "size": "427x922",
+      "score": 0.5171
+    },
+    "lower-silk": {
+      "id": "lower-silk",
+      "file": "assets/plates/lower-silk.png",
+      "status": "ok",
+      "assetHash": "d1dff91c5b1f005db097ca187949f6f40fba7a95d0e8ea621fa65e5738243ee7",
+      "regionHash": "97036ab10d8049870e86ca82c335f6edd73bb88c3b6c07dc653344da362e5865",
+      "referenceHash": "aec9398c6c3db68b1ce3d4cdfabd6a5887280d3c6f8c26785de924e4dab76a8c",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 204568,
+        "totalPixels": 314757,
+        "remainingPixels": 110189,
+        "excludedFraction": 0.649923591850221,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "open-control",
+            "kind": "control",
+            "cropPx": {
+              "x": 171,
+              "y": 0,
+              "w": 597,
+              "h": 184
+            },
+            "pixels": 109848
+          },
+          {
+            "id": "intro-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 171,
+              "y": 184,
+              "w": 512,
+              "h": 185
+            },
+            "pixels": 94720
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "701feefb2a77ba6ff830725540ed32735dfb8bc468717a5f05115b7a539372d6",
+      "size": "1280x554",
+      "score": 0.6384
+    },
+    "intro-floral": {
+      "id": "intro-floral",
+      "file": "assets/plates/intro-floral.png",
+      "status": "ok",
+      "assetHash": "6c9fd18d75a8350f7f54fed2db2b7205497fac5b967159aeb9479c7d0243fd30",
+      "regionHash": "c6814c9e40c8ff416ee566e3d09398eedfdab8c9bfc9d41bef925168a4912636",
+      "referenceHash": "aec9398c6c3db68b1ce3d4cdfabd6a5887280d3c6f8c26785de924e4dab76a8c",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 50600,
+        "totalPixels": 93357,
+        "remainingPixels": 42757,
+        "excludedFraction": 0.5420054200542005,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "intro-copy",
+            "kind": "text",
+            "cropPx": {
+              "x": 0,
+              "y": 0,
+              "w": 83,
+              "h": 185
+            },
+            "pixels": 15355
+          },
+          {
+            "id": "godparents",
+            "kind": "text",
+            "cropPx": {
+              "x": 0,
+              "y": 0,
+              "w": 253,
+              "h": 200
+            },
+            "pixels": 50600
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "701feefb2a77ba6ff830725540ed32735dfb8bc468717a5f05115b7a539372d6",
+      "size": "512x738",
+      "score": 0.4311
+    },
+    "intro-silk": {
+      "id": "intro-silk",
+      "file": "assets/plates/intro-silk.png",
+      "status": "ok",
+      "assetHash": "2f5e7b3f388907019dd18937cecc6e9091fc08a59f82d4e452a40c9f6af17790",
+      "regionHash": "5714d890cfe2dd007b9e71290db873facde05b630266ee5f298f3c5e75f7cf3b",
+      "referenceHash": "aec9398c6c3db68b1ce3d4cdfabd6a5887280d3c6f8c26785de924e4dab76a8c",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 0,
+        "totalPixels": 41984,
+        "remainingPixels": 41984,
+        "excludedFraction": 0.0,
+        "fullyExcluded": false,
+        "regions": [],
+        "ignoredContainers": []
+      },
+      "compHash": "701feefb2a77ba6ff830725540ed32735dfb8bc468717a5f05115b7a539372d6",
+      "size": "512x328",
+      "score": 0.6398
+    }
+  }
+}

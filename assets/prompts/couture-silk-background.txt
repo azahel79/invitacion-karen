@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: opaque full-frame textile plate for the opening screen of a premium mobile quinceañera invitation
+Primary request: dark petroleum-blue silk and velvet curtain material with elegant realistic folds entering from both vertical edges and softly pooling along the bottom, leaving a broad quiet nearly-black teal center for readable UI
+Scene/backdrop: full portrait frame filled by the textile environment, no transparent background
+Subject: couture-grade teal silk drapery inspired by a luxury quinceañera gown, no flowers or jewelry
+Style/medium: high-end editorial textile photography, realistic premium fabric, refined contemporary lighting
+Composition/framing: 2:3 portrait; asymmetric left and right folds; center 55 percent mostly calm and dark; bottom has a low draped fold; designed as a mobile website background
+Lighting/mood: soft directional studio highlights along folds, deep evening gala, controlled contrast
+Color palette: #05222C, #043F52, subtle #097087 highlights, nearly black teal shadows
+Materials/textures: silk satin and fine velvet, visible weave only at close detail
+Constraints: no text, no letters, no flowers, no people, no dress silhouette, no frame, no crystals, no logos, no watermark; center must remain uncluttered and dark
+Avoid: bright cyan, neon, artificial glow, symmetrical theater curtains, stage scenery, crushed black detail, AI artifacts
