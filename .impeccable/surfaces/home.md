@@ -23,6 +23,7 @@ The user supplied a precise mobile-only visual direction. Browser-based and stru
 - Reserved colors: a full icy-blue marble and crystal interlude carries the complete dress-code message above two realistic couture fabric swatches in Azul Plumbago and silver, echoing the supplied reference without baking browser chrome or text into the image.
 - Gifts: the presence message becomes a self-contained calligraphic scene over the icy marble world, anchored by a dimensional blue-and-silver gift box. Bank details live in a separate dark-teal “Un detalle especial” section so the transfer option does not visually merge with the reception coffer message; the account remains real, selectable, and functional.
 - Scroll continuity: section surfaces remain painted at all times while only their inner content animates, preventing observer delays from exposing empty teal fields; content-led heights, material-aware color fades, and Lenis provide continuous motion while honoring reduced-motion preferences.
+- Sound: the explicit “Abrir invitación” gesture starts the supplied song at a moderate volume; a persistent, accessible speaker control lets guests pause or resume it at any time, and the audio does not loop automatically.
 - Honest risk: the curtain can become theatrical or template-like, so decoration stays asymmetric, the center remains quiet, and later sections use editorial rules rather than repeating the curtain motif.
 
 ## Required facts

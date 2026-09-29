@@ -19,6 +19,8 @@ import {
   FiClock,
   FiCopy,
   FiMapPin,
+  FiVolume2,
+  FiVolumeX,
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -174,8 +176,10 @@ function MapLink({ href, children }: { href: string; children: React.ReactNode }
 export function InvitationExperience() {
   const [opened, setOpened] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+  const [musicPlaying, setMusicPlaying] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   const heroRef = useRef<HTMLElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const confettiRef = useRef<TCanvasConfettiInstance | null>(null);
   const reduceMotion = useReducedMotion();
   const heroInView = useInView(heroRef, { amount: 0.15 });
@@ -234,6 +238,13 @@ export function InvitationExperience() {
   function openInvitation() {
     if (opened) return;
     window.scrollTo(0, 0);
+
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.45;
+      void audio.play().catch(() => setMusicPlaying(false));
+    }
+
     setOpened(true);
 
     if (reduceMotion) return;
@@ -250,6 +261,17 @@ export function InvitationExperience() {
     });
   }
 
+  function toggleMusic() {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (audio.paused) {
+      void audio.play().catch(() => setMusicPlaying(false));
+    } else {
+      audio.pause();
+    }
+  }
+
   async function copyAccount() {
     try {
       await navigator.clipboard.writeText(bankAccount);
@@ -263,6 +285,32 @@ export function InvitationExperience() {
 
   return (
     <main className={opened ? "invitation-shell is-open" : "invitation-shell"}>
+      <audio
+        ref={audioRef}
+        src="/sound/coldplay-yellow.mp3"
+        preload="metadata"
+        onPlay={() => setMusicPlaying(true)}
+        onPause={() => setMusicPlaying(false)}
+        onEnded={() => setMusicPlaying(false)}
+      />
+      <AnimatePresence>
+        {introComplete && (
+          <motion.button
+            className={musicPlaying ? "music-toggle is-playing" : "music-toggle"}
+            type="button"
+            aria-label={musicPlaying ? "Pausar música" : "Reproducir música"}
+            title={musicPlaying ? "Pausar música" : "Reproducir música"}
+            onClick={toggleMusic}
+            initial={reduceMotion ? false : { opacity: 0, scale: 0.72 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.82 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ duration: 0.3, ease: easeOut }}
+          >
+            {musicPlaying ? <FiVolume2 aria-hidden="true" /> : <FiVolumeX aria-hidden="true" />}
+          </motion.button>
+        )}
+      </AnimatePresence>
       <motion.div
         className="scroll-progress-track"
         aria-hidden="true"
