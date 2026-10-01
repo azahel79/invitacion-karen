@@ -2,22 +2,23 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import Lenis from "lenis";
+import NumberFlow from "@number-flow/react";
 import {
   AnimatePresence,
   motion,
   useInView,
   useReducedMotion,
-  useScroll,
-  useSpring,
 } from "framer-motion";
 import ReactCanvasConfetti from "react-canvas-confetti";
 import type { TCanvasConfettiInstance } from "react-canvas-confetti/dist/types";
 import {
   FiArrowUpRight,
+  FiCalendar,
   FiCheck,
+  FiChevronDown,
   FiClock,
   FiCopy,
+  FiDownload,
   FiMapPin,
   FiVolume2,
   FiVolumeX,
@@ -30,10 +31,48 @@ const receptionMap =
 const bankAccount = "036260711520986383";
 const bankAccountHolder = "Elizabeth Ávila Villa";
 const whatsappDisplay = "228 422 9584";
+const eventDate = new Date("2026-10-10T13:00:00-06:00").getTime();
+const countdownUnits = [
+  { key: "days", label: "Días" },
+  { key: "hours", label: "Horas" },
+  { key: "minutes", label: "Minutos" },
+  { key: "seconds", label: "Segundos" },
+] as const;
+
+type Countdown = Record<(typeof countdownUnits)[number]["key"], number>;
+
+function getCountdown(): Countdown {
+  const remaining = Math.max(0, eventDate - Date.now());
+
+  return {
+    days: Math.floor(remaining / 86_400_000),
+    hours: Math.floor((remaining / 3_600_000) % 24),
+    minutes: Math.floor((remaining / 60_000) % 60),
+    seconds: Math.floor((remaining / 1_000) % 60),
+  };
+}
+
 const whatsappMessage = encodeURIComponent(
   "Hola, deseo confirmar mi asistencia a los XV años de Karen Paola Hernández Ávila. Mi nombre completo es: ",
 );
 const whatsappUrl = `https://wa.me/522284229584?text=${whatsappMessage}`;
+const googleCalendarBase = "https://calendar.google.com/calendar/render";
+const googleCeremonyUrl = `${googleCalendarBase}?${new URLSearchParams({
+  action: "TEMPLATE",
+  text: "Ceremonia religiosa · XV de Karen Paola",
+  dates: "20261010T130000/20261010T130000",
+  ctz: "America/Mexico_City",
+  details: "Ceremonia religiosa de los XV años de Karen Paola Hernández Ávila.",
+  location: "Iglesia de San José, Benito Juárez 27, Lomas de Hidalgo, Centro, 91300 Banderilla, Ver.",
+}).toString()}`;
+const googleReceptionUrl = `${googleCalendarBase}?${new URLSearchParams({
+  action: "TEMPLATE",
+  text: "Recepción · XV de Karen Paola",
+  dates: "20261010T150000/20261010T150000",
+  ctz: "America/Mexico_City",
+  details: "Recepción de los XV años de Karen Paola Hernández Ávila.",
+  location: "Salón Asunción, Avenida Libertad 69, Centro, 91300 Banderilla, Ver.",
+}).toString()}`;
 const jewelParticles = [
   { left: "14%", top: "30%", x: -18, y: -56, delay: 0.02 },
   { left: "28%", top: "54%", x: -28, y: -34, delay: 0.08 },
@@ -44,6 +83,21 @@ const jewelParticles = [
 ];
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
+
+function KarenMonogram({ compact = false }: { compact?: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={compact ? "karen-monogram compact" : "karen-monogram"}
+      viewBox="0 0 120 120"
+    >
+      <path className="monogram-frame" d="M60 4 116 60 60 116 4 60Z" />
+      <path className="monogram-rule" d="M29 36h62M29 84h62" />
+      <text className="monogram-initials" x="60" y="68">KP</text>
+      <text className="monogram-xv" x="60" y="82">XV</text>
+    </svg>
+  );
+}
 
 function CrystalOrnament({ compact = false }: { compact?: boolean }) {
   return (
@@ -87,6 +141,20 @@ function LetterReveal({
   const visible = active ?? inView;
   let letterIndex = 0;
 
+  if (text.length > 48) {
+    return (
+      <motion.span
+        ref={textRef}
+        className="animated-letters"
+        initial={false}
+        animate={visible || reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0.6, y: 12 }}
+        transition={{ duration: reduceMotion ? 0.12 : 0.58, delay, ease: easeOut }}
+      >
+        {text}
+      </motion.span>
+    );
+  }
+
   return (
     <span ref={textRef} className="animated-letters" aria-label={text}>
       {text.split(" ").map((word, wordIndex, words) => (
@@ -101,8 +169,8 @@ function LetterReveal({
                 initial={false}
                 animate={
                   visible || reduceMotion
-                    ? { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
-                    : { opacity: 0, y: "0.7em", rotateX: -68, filter: "blur(5px)" }
+                    ? { opacity: 1, y: 0, rotateX: 0 }
+                    : { opacity: 0.18, y: "0.35em", rotateX: -38 }
                 }
                 transition={{
                   duration: reduceMotion ? 0.12 : 0.46,
@@ -135,8 +203,8 @@ function RevealCopy({
   return (
     <motion.p
       className={className}
-      initial={reduceMotion ? false : { opacity: 0.32, clipPath: "inset(0 0 100% 0)", filter: "blur(5px)" }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, clipPath: "inset(0 0 0% 0)", filter: "blur(0px)" }}
+      initial={reduceMotion ? false : { opacity: 0.58, y: 14 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.58 }}
       transition={{ duration: 0.68, delay, ease: easeOut }}
     >
@@ -173,6 +241,80 @@ function MapLink({ href, children }: { href: string; children: React.ReactNode }
   );
 }
 
+function CountdownSection() {
+  const [countdown, setCountdown] = useState<Countdown | null>(null);
+
+  useEffect(() => {
+    const updateCountdown = () => setCountdown(getCountdown());
+    updateCountdown();
+
+    const timer = window.setInterval(updateCountdown, 1_000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="countdown-section invitation-section" aria-labelledby="countdown-title">
+      <header className="countdown-heading">
+        <h2 id="countdown-title">
+          <LetterReveal text="Falta muy poco" />
+        </h2>
+        <p>para celebrar mis XV años</p>
+      </header>
+      <div className="countdown-grid" aria-label="Cuenta regresiva para el evento">
+        {countdownUnits.map((unit) => (
+          <div className="countdown-unit" key={unit.key}>
+            {countdown ? (
+              <NumberFlow
+                value={countdown[unit.key]}
+                format={{ minimumIntegerDigits: 2, useGrouping: false }}
+                trend={-1}
+              />
+            ) : (
+              <span aria-hidden="true">--</span>
+            )}
+            <small>{unit.label}</small>
+          </div>
+        ))}
+      </div>
+      <p className="countdown-date">Sábado · 10 de octubre · 1:00 PM</p>
+      <details className="calendar-options">
+        <summary className="calendar-link">
+          <FiCalendar aria-hidden="true" />
+          <span>
+            <strong>Agregar al calendario</strong>
+            <small>Google, Android, Apple u Outlook</small>
+          </span>
+          <FiChevronDown className="calendar-chevron" aria-hidden="true" />
+        </summary>
+        <div className="calendar-choice-list">
+          <p>Elige dónde deseas guardarlo</p>
+          <a href={googleCeremonyUrl} target="_blank" rel="noreferrer">
+            <span>
+              <strong>Google Calendar</strong>
+              <small>Ceremonia · 1:00 PM</small>
+            </span>
+            <FiArrowUpRight aria-hidden="true" />
+          </a>
+          <a href={googleReceptionUrl} target="_blank" rel="noreferrer">
+            <span>
+              <strong>Google Calendar</strong>
+              <small>Recepción · 3:00 PM</small>
+            </span>
+            <FiArrowUpRight aria-hidden="true" />
+          </a>
+          <a href="/karen-paola-xv.ics">
+            <span>
+              <strong>Importar ambos eventos</strong>
+              <small>Samsung Calendar, Apple, Outlook y otros</small>
+            </span>
+            <FiDownload aria-hidden="true" />
+          </a>
+        </div>
+      </details>
+    </section>
+  );
+}
+
 export function InvitationExperience() {
   const [opened, setOpened] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
@@ -183,34 +325,13 @@ export function InvitationExperience() {
   const confettiRef = useRef<TCanvasConfettiInstance | null>(null);
   const reduceMotion = useReducedMotion();
   const heroInView = useInView(heroRef, { amount: 0.15 });
-  const { scrollYProgress } = useScroll();
-  const smoothScrollProgress = useSpring(scrollYProgress, {
-    stiffness: 110,
-    damping: 24,
-    mass: 0.22,
-  });
 
   useEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
 
-    const lenis = new Lenis({
-      autoRaf: true,
-      autoToggle: true,
-      anchors: true,
-      lerp: 0.09,
-      smoothWheel: true,
-      syncTouch: true,
-      syncTouchLerp: 0.09,
-      touchInertiaExponent: 1.5,
-      touchMultiplier: 0.92,
-      overscroll: false,
-      respectReducedMotion: true,
-    });
-
     return () => {
-      lenis.destroy();
       window.history.scrollRestoration = previousRestoration;
     };
   }, []);
@@ -256,7 +377,7 @@ export function InvitationExperience() {
       ticks: 100,
       scalar: 0.62,
       origin: { x: 0.5, y: 0.58 },
-      colors: ["#CBD6D4", "#EDF3F1", "#61A3AA", "#AC7E75"],
+      colors: ["#DCEAE4", "#F7FCF9", "#8FD5BD", "#AC7E75"],
       shapes: ["circle"],
     });
   }
@@ -311,14 +432,6 @@ export function InvitationExperience() {
           </motion.button>
         )}
       </AnimatePresence>
-      <motion.div
-        className="scroll-progress-track"
-        aria-hidden="true"
-        animate={{ opacity: introComplete ? 1 : 0 }}
-        transition={{ duration: 0.25 }}
-      >
-        <motion.span style={{ scaleY: smoothScrollProgress }} />
-      </motion.div>
       <ReactCanvasConfetti
         className="confetti-canvas"
         globalOptions={{ resize: true, useWorker: true }}
@@ -333,7 +446,7 @@ export function InvitationExperience() {
             className="entry-gate"
             aria-label="Abrir invitación"
             initial={false}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: "blur(7px)" }}
+            exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0.12 : 0.34, ease: easeOut }}
           >
             <motion.div
@@ -364,14 +477,12 @@ export function InvitationExperience() {
               className="entry-copy"
               animate={
                 opened
-                  ? { opacity: 0, y: -12, filter: "blur(8px)" }
-                  : { opacity: 1, y: 0, filter: "blur(0px)" }
+                  ? { opacity: 0, y: -8 }
+                  : { opacity: 1, y: 0 }
               }
               transition={{ duration: 0.32, ease: easeOut }}
             >
-              <div className="entry-emblem" aria-hidden="true">
-                <span>XV</span>
-              </div>
+              <KarenMonogram />
               <h2>
                 <LetterReveal text="Una noche especial" active={!opened} delay={0.08} />
               </h2>
@@ -475,8 +586,8 @@ export function InvitationExperience() {
           initial={false}
           animate={
             introComplete
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : { opacity: 0, y: 22, filter: "blur(8px)" }
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 16 }
           }
           transition={{ duration: 0.72, ease: easeOut }}
         >
@@ -530,8 +641,8 @@ export function InvitationExperience() {
           <div className="family-groups">
             <motion.div
               className="family-group family-parents"
-              initial={reduceMotion ? false : { opacity: 0, x: -28, clipPath: "inset(0 18% 0 0)" }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
+              initial={reduceMotion ? false : { opacity: 0.45, x: -20 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.65 }}
               transition={{ duration: 0.68, ease: easeOut }}
             >
@@ -548,8 +659,8 @@ export function InvitationExperience() {
             </div>
             <motion.div
               className="family-group family-godparents"
-              initial={reduceMotion ? false : { opacity: 0, x: 28, clipPath: "inset(0 0 0 18%)" }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0, clipPath: "inset(0 0 0 0%)" }}
+              initial={reduceMotion ? false : { opacity: 0.45, x: 20 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.65 }}
               transition={{ duration: 0.68, ease: easeOut }}
             >
@@ -570,6 +681,16 @@ export function InvitationExperience() {
           />
         </section>
 
+        <section className="dedication-section invitation-section" aria-label="Dedicatoria de Karen">
+          <KarenMonogram compact />
+          <blockquote>
+            <p>
+              <LetterReveal text="Hay momentos que se vuelven eternos cuando se comparten con las personas que queremos. Gracias por acompañarme." />
+            </p>
+            <cite>Karen Paola</cite>
+          </blockquote>
+        </section>
+
         <section className="date-section invitation-section" aria-label="Fecha del evento">
           <p className="date-day">Sábado</p>
           <div className="date-lockup">
@@ -579,15 +700,19 @@ export function InvitationExperience() {
           <p className="date-note">Una tarde para celebrar, una noche para recordar.</p>
         </section>
 
-        <section className="schedule-section invitation-section">
-          <SectionTitle>Ceremonia religiosa</SectionTitle>
+        <CountdownSection />
+
+        <section className="schedule-section invitation-section" aria-label="Ruta de la tarde">
+          <SectionTitle>Ruta de la tarde</SectionTitle>
+          <p className="route-intro">Dos momentos para compartir una misma celebración.</p>
           <motion.div
             className="venue-block"
-            initial={reduceMotion ? false : { opacity: 0, x: -20, clipPath: "inset(0 14% 0 0)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
+            initial={reduceMotion ? false : { opacity: 0.45, x: -16 }}
+            whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.62, ease: easeOut }}
           >
+            <p className="venue-kind">Ceremonia religiosa</p>
             <div className="venue-time">
               <FiClock aria-hidden="true" />
               <span>1:00 PM</span>
@@ -610,14 +735,14 @@ export function InvitationExperience() {
             <span />
           </motion.div>
 
-          <SectionTitle>Recepción</SectionTitle>
           <motion.div
             className="venue-block reception-block"
-            initial={reduceMotion ? false : { opacity: 0, x: 20, clipPath: "inset(0 0 0 14%)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, x: 0, clipPath: "inset(0 0 0 0%)" }}
+            initial={reduceMotion ? false : { opacity: 0.45, x: 16 }}
+            whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.62, ease: easeOut }}
           >
+            <p className="venue-kind">Recepción</p>
             <div className="venue-time">
               <FiClock aria-hidden="true" />
               <span>15:00 hrs</span>
@@ -630,18 +755,18 @@ export function InvitationExperience() {
 
         <section className="dress-section invitation-section" aria-label="Código de vestimenta">
           <h2 className="dress-message">
-            <LetterReveal text="Se reserva el uso de los colores Azul Plumbago y Plata para la quinceañera y su corte de honor" />
+            <LetterReveal text="Se reserva el uso de los colores Verde Jade y Plata para la quinceañera y su corte de honor" />
           </h2>
           <motion.div
             className="dress-swatch-art"
-            initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.86, filter: "blur(8px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            initial={reduceMotion ? false : { opacity: 0.45, y: 14, scale: 0.96 }}
+            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.7 }}
             transition={{ duration: 0.82, delay: 0.12, ease: easeOut }}
           >
             <Image
               src="/assets/dress-code-swatches-v1.webp"
-              alt="Muestras de tela en azul plumbago y plata"
+              alt="Muestras de tela en verde jade y plata"
               width={1774}
               height={887}
               sizes="(max-width: 480px) 82vw, 360px"
@@ -667,14 +792,14 @@ export function InvitationExperience() {
           </h2>
           <motion.div
             className="gift-box-art"
-            initial={reduceMotion ? false : { opacity: 0, y: 34, scale: 0.82, filter: "blur(9px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            initial={reduceMotion ? false : { opacity: 0.45, y: 14, scale: 0.96 }}
+            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.62 }}
             transition={{ duration: 0.88, delay: 0.14, ease: easeOut }}
           >
             <Image
               src="/assets/gift-box-blue-silver-v1.webp"
-              alt="Caja de regalo azul plumbago con listón plateado"
+              alt="Caja de regalo verde jade con listón plateado"
               width={1254}
               height={1254}
               sizes="(max-width: 480px) 58vw, 250px"
@@ -742,18 +867,18 @@ export function InvitationExperience() {
           />
           <motion.div
             className="confirmation-content"
-            initial={reduceMotion ? false : { opacity: 0, clipPath: "inset(0 0 18% 0)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+            initial={reduceMotion ? false : { opacity: 0.5, y: 16 }}
+            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.45 }}
             transition={{ duration: 0.7, ease: easeOut }}
           >
             <SectionTitle>Confirmación</SectionTitle>
             <RevealCopy>
               Estamos cuidando cada detalle para que sea una noche mágica. Tu
-              confirmación con nombre completo antes del 10 de septiembre. Puedes
+              confirmación con nombre completo antes del 10 de octubre. Puedes
               hacerlo directamente por WhatsApp.
             </RevealCopy>
-            <RevealCopy className="deadline" delay={0.08}>Antes del 10 de septiembre</RevealCopy>
+            <RevealCopy className="deadline" delay={0.08}>Antes del 10 de octubre</RevealCopy>
             <motion.a
               className="whatsapp-confirm"
               href={whatsappUrl}
@@ -774,6 +899,7 @@ export function InvitationExperience() {
         </section>
 
         <footer className="invitation-footer">
+          <KarenMonogram compact />
           <CrystalOrnament compact />
           <p>Con cariño,</p>
           <strong>Karen</strong>

@@ -16,26 +16,27 @@ Guests invited to Karen Paola Hernández Ávila's quinceañera, opening the invi
 
 ## Product Purpose
 
-Provide a complete digital invitation for Karen's XV celebration. Guests should understand the event sequence, open both venue locations, respect the reserved colors, read the gift guidance, and know the confirmation deadline.
+Provide a complete digital invitation for Karen's XV celebration. Guests should understand the event sequence, save both moments to their calendar, open both venue locations, respect the reserved colors, read the gift guidance, and know the confirmation deadline.
 
 ## Capabilities and Constraints
 
 - Spanish-language web experience.
 - Mobile-only vertical experience.
-- Event date: Saturday, October 10. The year is not confirmed and must not be displayed or inferred.
+- Event date: Saturday, October 10, 2026. The year is used for the countdown and does not need to be displayed in the invitation copy.
 - Religious ceremony: 1:00 PM at Iglesia de San José, Benito Juárez 27, Lomas de Hidalgo, Centro, 91300 Banderilla, Veracruz.
 - Reception: 15:00 at Salón Asunción, Avenida Libertad 69, Centro, 91300 Banderilla, Veracruz.
 - Parents: Jorge Hernández and Elizabeth Ávila Villa.
 - Main godparents: Jesús Ávila and Mitzy García.
-- Azul Plumbago and silver are reserved for the quinceañera and her court.
+- Verde Jade and silver are reserved for the quinceañera and her court.
 - Cash gifts may be left in the reception chest or transferred to account 036260711520986383, held by Elizabeth Ávila Villa.
-- Guests should confirm with their full name before September 10 by WhatsApp at 228 422 9584.
+- Guests should confirm with their full name before October 10 by WhatsApp at 228 422 9584.
+- Guests can add each moment directly to Google Calendar or import both events into Samsung Calendar, Apple Calendar, Outlook, and other compatible calendars.
 - No gallery and no photographs of the quinceañera or other people.
 - No unconfirmed event details or claims should be invented.
 
 ## Brand Commitments
 
-The celebrant's full name is Karen Paola Hernández Ávila. The confirmed visual identity is premium, feminine, contemporary, and inspired by a formal quinceañera dress: deep petroleum/plumbago blues, restrained turquoise, pearled silver, delicate florals, crystals, beadwork, metallic lines, and soft reflected light. Dusty rose and soft peach are limited to tiny floral details. Avoid neon, childish motifs, generic invitation tropes, artificial-looking imagery, excessive ornament, and difficult-to-read typography.
+The celebrant's full name is Karen Paola Hernández Ávila. The confirmed visual identity is premium, feminine, contemporary, and inspired by a formal quinceañera dress: deep jade green, restrained emerald highlights, pearled silver, delicate florals, crystals, beadwork, metallic lines, and soft reflected light. Dusty rose and soft peach are limited to tiny floral details. Avoid neon, childish motifs, generic invitation tropes, artificial-looking imagery, excessive ornament, and difficult-to-read typography.
 
 ## Evidence on Hand
 

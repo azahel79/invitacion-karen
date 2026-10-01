@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitacion Karen Paola//XV 2026//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:XV años de Karen Paola
+BEGIN:VEVENT
+UID:karen-paola-ceremonia-20261010@invitacion.local
+DTSTAMP:20260930T120000Z
+DTSTART;TZID=America/Mexico_City:20261010T130000
+SUMMARY:Ceremonia religiosa · XV de Karen Paola
+LOCATION:Iglesia de San José\, Benito Juárez 27\, Lomas de Hidalgo\, Centro\, 91300 Banderilla\, Ver.
+DESCRIPTION:Ceremonia religiosa de los XV años de Karen Paola Hernández Ávila.
+URL:https://maps.app.goo.gl/nq4ar2cxgUZRWw2HA?g_st=aw
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:karen-paola-recepcion-20261010@invitacion.local
+DTSTAMP:20260930T120000Z
+DTSTART;TZID=America/Mexico_City:20261010T150000
+SUMMARY:Recepción · XV de Karen Paola
+LOCATION:Salón Asunción\, Avenida Libertad 69\, Centro\, 91300 Banderilla\, Ver.
+DESCRIPTION:Recepción de los XV años de Karen Paola Hernández Ávila.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
